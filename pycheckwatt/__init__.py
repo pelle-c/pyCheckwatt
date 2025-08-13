@@ -219,6 +219,10 @@ class CheckwattManager:
                     )
                     return False
 
+                if response.status == 404:
+                    _LOGGER.error("Not found - %s", url)
+                    return True
+
                 _LOGGER.error("Unexpected HTTP status code: %s", response.status)
                 return False
 
